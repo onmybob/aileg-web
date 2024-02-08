@@ -11,6 +11,8 @@ jobs:
     name: Build docker
     runs-on: ubuntu-latest
     steps:
+      - name: Check out the repo
+        uses: actions/checkout@v4
       - 
         name: Discover docker tags
         uses: dotcms/discover-docker-tags-action@v2.0
