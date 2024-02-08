@@ -3,8 +3,8 @@ name: build_docker
 on:
   push:
     branches: [main]
-  #release:
-#    types: [published] # 表示在创建新的 Release 时触发
+  release:
+    types: [created, published] # 表示在创建新的 Release 时触发
 
 jobs:
   build_docker:
@@ -13,14 +13,6 @@ jobs:
     steps:
       - name: Check out the repo
         uses: actions/checkout@v4
-      - 
-        name: Discover docker tags
-        uses: dotcms/discover-docker-tags-action@v2.0
-        with:
-          version: ${{ env.RELEASE_VERSION }}
-          hash: ${{ env.BUILD_HASH }}
-          label: ${{ env.RELEASE_LABEL }}
-          update_stable: ${{ env.IS_RELEASE }}
       - 
         uses: rlespinasse/github-slug-action@v4
       -
@@ -42,5 +34,5 @@ jobs:
           context: .
           push: true
           tags: |
-            ${{ secrets.DOCKERHUB_USERNAME }}/${{ env.GITHUB_REPOSITORY_NAME_PART }}:${{ env.github.event.release.tag_name }}
+            ${{ secrets.DOCKERHUB_USERNAME }}/${{ env.GITHUB_REPOSITORY_NAME_PART }}:${{ env.GITHUB_REF_NAME }}
             ${{ secrets.DOCKERHUB_USERNAME }}/${{ env.GITHUB_REPOSITORY_NAME_PART }}:latest
