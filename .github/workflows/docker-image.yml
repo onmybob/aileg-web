@@ -11,8 +11,8 @@ jobs:
     runs-on: ubuntu-latest
     environment: hub_docker
     env:
-      DOCKER_USERNAME: ${{ vars.DOCKERHUB_USERNAME }}
-      DOCKER_TOKEN: ${{ vars.DOCKERHUB_TOKEN }}
+      DOCKER_USERNAME: ${{ secrets.DOCKERHUB_USERNAME }}
+      DOCKER_TOKEN: ${{ secrets.DOCKERHUB_TOKEN }}
 
     steps:
       - name: Check out the repo
@@ -38,5 +38,5 @@ jobs:
           context: .
           push: true
           tags: |
-            ${{ secrets.DOCKERHUB_USERNAME }}/${{ env.GITHUB_REPOSITORY_NAME_PART }}:${{ env.GITHUB_REF_NAME }}
-            ${{ secrets.DOCKERHUB_USERNAME }}/${{ env.GITHUB_REPOSITORY_NAME_PART }}:latest
+            $DOCKER_USERNAME/${{ env.GITHUB_REPOSITORY_NAME_PART }}:${{ env.GITHUB_REF_NAME }}
+            $DOCKER_USERNAME/${{ env.GITHUB_REPOSITORY_NAME_PART }}:latest
