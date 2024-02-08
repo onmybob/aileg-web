@@ -11,12 +11,14 @@ jobs:
     name: Build docker
     runs-on: ubuntu-latest
     steps:
-      -
-        uses: battila7/get-version-action@v2
-
-      - run: echo ${{ steps.get_version.outputs.version }}
-      - run: echo ${{ steps.get_version.outputs.version-without-v }}
-    
+      - 
+        name: Discover docker tags
+        uses: dotcms/discover-docker-tags-action@v2.0
+        with:
+          version: ${{ env.RELEASE_VERSION }}
+          hash: ${{ env.BUILD_HASH }}
+          label: ${{ env.RELEASE_LABEL }}
+          update_stable: ${{ env.IS_RELEASE }}
       - 
         uses: rlespinasse/github-slug-action@v4
       -
