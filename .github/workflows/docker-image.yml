@@ -4,7 +4,7 @@ on:
   push:
     branches: [main]
   #release:
-#    types: [created] # 表示在创建新的 Release 时触发
+#    types: [published] # 表示在创建新的 Release 时触发
 
 jobs:
   build_docker:
@@ -31,5 +31,5 @@ jobs:
         with:
           push: true
           tags: |
-            ${{ secrets.DOCKERHUB_USERNAME }}/${{ env.GITHUB_REPOSITORY_NAME_PART }}:${{ env.GITHUB_REF_NAME }}
+            ${{ secrets.DOCKERHUB_USERNAME }}/${{ env.GITHUB_REPOSITORY_NAME_PART }}:${{ github.event.release.tag_name }}
             ${{ secrets.DOCKERHUB_USERNAME }}/${{ env.GITHUB_REPOSITORY_NAME_PART }}:latest
