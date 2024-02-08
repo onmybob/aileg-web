@@ -16,5 +16,8 @@ This project uses [`next/font`](https://nextjs.org/docs/basic-features/font-opti
 
 ## Deploy on Docker
 
-docker build --platform linux -t onmybob/aileg-web .
-docker push onmybob/aileg-web
+Submit a new tag, github actions will automatically complete the deployment.
+
+```bash
+git tag v0.0.2 && git push --tags
+```
