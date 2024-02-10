@@ -1,4 +1,4 @@
-name: build_docker
+name: Build docker image and deploy to server
 
 on:
   workflow_dispatch:
