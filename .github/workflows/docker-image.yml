@@ -1,7 +1,7 @@
 name: build_docker
 
 on:
-  #workflow_dispatch:
+  workflow_dispatch:
   push:
     #branches: [ main ]
     tags: ['v*.*.*' ]
@@ -37,3 +37,15 @@ jobs:
           tags: |
             ${{ secrets.DOCKERHUB_USERNAME }}/${{ env.GITHUB_REPOSITORY_NAME_PART }}:${{ env.GITHUB_REF_NAME }}
             ${{ secrets.DOCKERHUB_USERNAME }}/${{ env.GITHUB_REPOSITORY_NAME_PART }}:latest
+      -
+        name: SSH Remote Commands
+        uses: appleboy/ssh-action@v1.0.3
+        with:
+          host: aileg.io
+          username: root
+          key: ${{ secrets.SSH_AILEG_KEY }}
+          script: |
+            docker stop aileg-web && aileg-web
+            docker pull onmybob/aileg-web:latest
+            docker run -p 80:3000 -d onmybob/aileg-web
+            
