@@ -1,0 +1,8 @@
+version: "3"
+services:
+  aileg-web:
+    container_name: aileg-web
+    image: "onmybob/aileg-web"
+    restart: unless-stopped
+    ports:
+      - 80:3000
