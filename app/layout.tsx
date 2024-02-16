@@ -5,8 +5,8 @@ import DocTreeView from "./ui/DocTreeView";
 import { treeType } from "../types/treeType";
 import ThemeProvider from "@/components/providers/ThemeProvider";
 import ThemeSwitch from "@/components/ThemeSwitch";
+import Metrics from "@/metrics";
 const inter = Inter({ subsets: ["latin"] });
-import { initialize } from "react-native-clarity";
 
 export const metadata: Metadata = {
   title: "AI Api tools, make your system ai-enabled",
@@ -162,7 +162,6 @@ export default function RootLayout({
       children: [],
     },
   ];
-  initialize("l2jzdbletw");
 
   return (
     <html lang="en" suppressHydrationWarning>
@@ -189,6 +188,7 @@ export default function RootLayout({
             <div className="py-8 px-12 container">{children}</div>
           </div>
         </ThemeProvider>
+        <Metrics />
       </body>
     </html>
   );
