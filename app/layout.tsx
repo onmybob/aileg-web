@@ -6,6 +6,7 @@ import { treeType } from "../types/treeType";
 import ThemeProvider from "@/components/providers/ThemeProvider";
 import ThemeButton from "@/components/ThemeButton";
 import ThemeSwitch from "@/components/ThemeSwitch";
+import ModeToggle from "@/components/ThemeSwitch2";
 const inter = Inter({ subsets: ["latin"] });
 
 export const metadata: Metadata = {
@@ -121,7 +122,7 @@ export default function RootLayout({
           enableSystem
           disableTransitionOnChange
         >
-          <header className=" dark:bg-gray-900 h-16 border-b border-gray-200 flex justify-between items-center px-12">
+          <header className="h-16 border-b border-gray-200 flex justify-between items-center px-12">
             <div className="header-left flex items-center space-x-4">
               <span className="text-gray-800">Aileg.io</span>
             </div>
@@ -131,6 +132,7 @@ export default function RootLayout({
               <a href="#">c</a>
               <a href="#">d</a>
               <ThemeSwitch />
+              {/* <ModeToggle /> */}
             </div>
           </header>
 
