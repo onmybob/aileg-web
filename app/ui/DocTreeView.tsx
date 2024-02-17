@@ -13,23 +13,37 @@ const DocTreeView = ({ navItems }: { navItems: treeType[] }) => {
       {navItems.map((item) => (
         <div key={item.lable}>
           {item.parentId == null ? (
-            <span className="text-sm text-gray-400 dark:text-white">
-              {item.lable}
-            </span>
+            <span className="text-sm text-gray-400 ">{item.lable}</span>
           ) : (
             //子集菜单
-            <Link
-              href={item.href}
-              className={clsx(
-                "border-l-2 h-8 dark:text-gray-400 flex items-center  text-gray-800 border-gray-400 pl-4 hover:text-yellow-600  hover:border-yellow-600",
-                {
-                  "font-semibold text-yellow-600 dark:text-yellow-600 border-yellow-600":
-                    pathname === item.href,
-                }
-              )}
-            >
-              {item.lable}
-            </Link>
+            <div>
+              <a
+                href={item.href}
+                className={clsx(
+                  "border-l-2 h-8 lg:hidden  flex items-center  text-gray-800 dark:text-gray-200 border-gray-400 pl-4 hover:text-yellow-600  hover:border-yellow-600",
+                  {
+                    "font-semibold text-yellow-600 dark:text-yellow-600 border-yellow-600":
+                      pathname === item.href,
+                  }
+                )}
+              >
+                {item.lable}
+              </a>
+
+              <Link
+                href={item.href}
+                passHref
+                className={clsx(
+                  "border-l-2 h-8 hidden lg:flex items-center  text-gray-800 dark:text-gray-200 border-gray-400 pl-4 hover:text-yellow-600  hover:border-yellow-600",
+                  {
+                    "font-semibold text-yellow-600 dark:text-yellow-600 border-yellow-600":
+                      pathname === item.href,
+                  }
+                )}
+              >
+                {item.lable}
+              </Link>
+            </div>
           )}
 
           {item.children.length > 1 ? (
