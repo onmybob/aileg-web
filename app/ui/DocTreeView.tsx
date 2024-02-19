@@ -9,7 +9,7 @@ const DocTreeView = ({ navItems }: { navItems: treeType[] }) => {
   const pathname = usePathname();
 
   return (
-    <div className="flex flex-col mb-10  ">
+    <div className="mb-10 flex flex-col  ">
       {navItems.map((item) => (
         <div key={item.lable}>
           {item.parentId == null ? (
@@ -20,11 +20,11 @@ const DocTreeView = ({ navItems }: { navItems: treeType[] }) => {
               <a
                 href={item.href}
                 className={clsx(
-                  "border-l-2 h-8 lg:hidden  flex items-center  text-gray-800 dark:text-gray-200 border-gray-400 pl-4 hover:text-yellow-600  hover:border-yellow-600",
+                  "flex h-8 items-center  border-l-2 border-gray-400  pl-4 text-gray-800 hover:border-yellow-400 hover:text-yellow-400 dark:text-gray-200  lg:hidden",
                   {
-                    "font-semibold text-yellow-600 dark:text-yellow-600 border-yellow-600":
+                    " border-yellow-400 text-yellow-400 dark:text-yellow-400":
                       pathname === item.href,
-                  }
+                  },
                 )}
               >
                 {item.lable}
@@ -34,11 +34,11 @@ const DocTreeView = ({ navItems }: { navItems: treeType[] }) => {
                 href={item.href}
                 passHref
                 className={clsx(
-                  "border-l-2 h-8 hidden lg:flex items-center  text-gray-800 dark:text-gray-200 border-gray-400 pl-4 hover:text-yellow-600  hover:border-yellow-600",
+                  "hidden h-8 items-center border-l-2 border-gray-400  pl-4 text-gray-800 hover:border-yellow-400 hover:text-yellow-400 dark:text-gray-200  lg:flex",
                   {
-                    "font-semibold text-yellow-600 dark:text-yellow-600 border-yellow-600":
+                    "  border-yellow-400 text-yellow-600 dark:text-yellow-400":
                       pathname === item.href,
-                  }
+                  },
                 )}
               >
                 {item.lable}
@@ -47,7 +47,7 @@ const DocTreeView = ({ navItems }: { navItems: treeType[] }) => {
           )}
 
           {item.children.length > 1 ? (
-            <div className=" flex flex-col mt-2">
+            <div className=" mt-2 flex flex-col">
               <DocTreeView navItems={item.children} />
             </div>
           ) : null}

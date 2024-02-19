@@ -8,14 +8,13 @@ import ThemeSwitch from "@/components/ThemeSwitch";
 import Metrics from "@/metrics";
 const inter = Inter({ subsets: ["latin"] });
 import { MdMenu } from "react-icons/md";
-import DocsNav from "./ui/DocsNav";
 import docsNavData from "@/data/docsNavData";
 import SideBarSwitch from "./ui/SideBarSwitch";
 
 export const metadata: Metadata = {
-  title: "AI Api tools, make your system ai-enabled",
+  title: "Easy to empower your program by aileg",
   description:
-    "Explore ai, API docs, and dynamic examples to get the most out of  AI's developer platform to empower your programs.",
+    "Explore AI and enhance your programs with the AI leg developer platform.",
 };
 
 export default function RootLayout({
@@ -32,22 +31,24 @@ export default function RootLayout({
           enableSystem
           disableTransitionOnChange
         >
-          <header className="dark:bg-header  h-16 border-b border-gray-200 dark:border-gray-700 flex justify-between items-center px-4 lg:px-12">
-            <div className="header-left flex items-center space-x-4">
-              <span className="text-gray-800 dark:text-white">Aileg.io</span>
-            </div>
-            <div className="header-right space-x-4 flex items-center">
-              <ThemeSwitch />
-              <SideBarSwitch />
-            </div>
-          </header>
+          <div className="h-screen w-screen overflow-hidden dark:bg-main ">
+            <header className="flex  h-16 items-center justify-between border-b border-gray-200 px-4 dark:border-gray-800 dark:bg-header lg:px-6">
+              <div className="header-left flex items-center space-x-4">
+                <span className="text-gray-800 dark:text-white">Aileg.io</span>
+              </div>
+              <div className="header-right flex items-center space-x-4">
+                <ThemeSwitch />
+                <SideBarSwitch />
+              </div>
+            </header>
 
-          <div className="flex min-h-screen dark:bg-main">
-            <nav className="hidden left-menu w-50 border-r border-gray-200 dark:border-gray-700  py-8 px-12 lg:flex flex-shrink-0">
-              <DocTreeView navItems={docsNavData} />
-            </nav>
+            <div className="flex ">
+              <nav className="left-menu hidden h-screen  flex-shrink-0 flex-col   overflow-scroll border-r border-gray-200  px-6 py-8 dark:border-gray-800 lg:flex  ">
+                <DocTreeView navItems={docsNavData} />
+              </nav>
 
-            <div className="py-8 px-12 container ">{children}</div>
+              <div className=" flex   h-screen overflow-scroll">{children}</div>
+            </div>
           </div>
         </ThemeProvider>
         <Metrics />

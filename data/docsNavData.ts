@@ -12,7 +12,7 @@ const docsNavData: treeType[] = [
       {
         id: 6,
         parentId: 1,
-        href: "/docs/brief",
+        href: "/docs/introduction/brief",
         lable: "What is aileg?",
         icon: null,
         children: [],
@@ -20,7 +20,7 @@ const docsNavData: treeType[] = [
       {
         id: 7,
         parentId: 1,
-        href: "/docs/benefit",
+        href: "/docs/introduction/goals",
         lable: "Design goals",
         icon: null,
         children: [],
