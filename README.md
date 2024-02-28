@@ -19,5 +19,5 @@ This project uses [`next/font`](https://nextjs.org/docs/basic-features/font-opti
 Submit a new tag, github actions will automatically complete the deployment.
 
 ```bash
-git tag v0.0.2 && git push --tags
+./deploy.sh
 ```
