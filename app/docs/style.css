@@ -1,0 +1,15 @@
+h1 {
+  @apply mb-4 text-3xl font-semibold text-neutral-800 dark:text-neutral-200;
+}
+
+h2 {
+  @apply mt-12 text-2xl font-semibold text-neutral-800 dark:text-neutral-200;
+}
+
+.content {
+  @apply text-neutral-600  dark:text-neutral-400;
+}
+
+ul {
+  @apply ml-4 mt-4 list-disc;
+}

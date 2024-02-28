@@ -20,6 +20,7 @@ const config: Config = {
         header: "#020408",
         main: "#0D1116",
         "side-bar": "#161B22",
+
         "side-bar2": "#24282E",
         tahiti: "#3ab7bf",
         silver: "#ecebff",
